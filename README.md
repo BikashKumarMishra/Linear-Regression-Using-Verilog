@@ -38,13 +38,6 @@ This repository contains Verilog modules that implement various components requi
 3. **Testing**:  
    - Each module includes its corresponding testbench (e.g., `memory_in_tb.v`, `multiplier_ckt_8bit_tb.v`) to verify its functionality. 
 
-## Getting Started
-
-To get started with the project, clone the repository and use a Verilog simulator (e.g., ModelSim, Vivado) to run the testbenches and simulate the hardware. Each module has a corresponding testbench file for easy verification of its functionality.
-
-### Requirements:
-- A Verilog simulator such as ModelSim or Vivado.
-- Basic knowledge of hardware description languages (HDLs) like Verilog.
 
 ## Motivation
 
