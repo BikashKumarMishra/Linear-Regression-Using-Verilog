@@ -1,15 +1,52 @@
-# Linear-Regression-Using-Verilog
-Linear regression is a foundational technique in statistics and machine learning used to model the relationship between one or more independent variables and a dependent variable by fitting a linear equation. It is simple, interpretable, and computationally efficient, making it ideal for understanding trends, making predictions, and evaluating feature importance. The model assumes a linear relationship, independence of observations, constant variance of residuals, and minimal multicollinearity among features.
+# Linear Regression Model Using Hardware System
 
-Implementing linear regression in hardware systems can be necessary for applications requiring high-speed computations, real-time processing, or energy efficiency. Unlike software implementations, hardware systems, such as FPGAs or ASICs, can execute operations in parallel, significantly speeding up matrix calculations and data-intensive tasks. 
+This project implements a **linear regression model** using a **hardware system**. It explores how hardware can optimize tasks such as matrix multiplication, memory management, and inverse calculations. The system uses basic arithmetic units like adders and multipliers and divides memory for three primary components: **input features**, **output values**, and **weights**. 
 
-This repository contains Verilog modules and testbenches for a hardware memory system designed to support linear regression computations. The files include:  
+## Project Structure
 
-- **memory_in.v**: Module for managing input feature storage and retrieval.  
-- **memory_in_tb.v**: Testbench for verifying the functionality of `memory_in.v`.  
-- **memory_out.v**: Module for handling output storage operations.  
-- **memory_out_tb.v**: Testbench for validating the `memory_out.v` module.  
-- **memory_weight.v**: Module for storing and updating weights during iterative computations.  
-- **memory_weight_tb.v**: Testbench for testing `memory_weight.v`.  
+This repository contains Verilog modules that implement various components required for the linear regression model.
 
-These modules are designed for efficient memory management in digital hardware systems and are integral to implementing linear regression on FPGA or ASIC platforms.
+### **Memory Units**
+- **`memory_in.v`**: Memory module for storing the input features of the linear regression model.
+- **`memory_out.v`**: Memory module for storing the output values computed during each iteration.
+- **`memory_weight.v`**: Memory module for storing the weights of the regression model, which are updated during training.
+  
+### **Testbenches for Memory Modules**
+- **`memory_in_tb.v`**: Testbench for the `memory_in` module.
+- **`memory_out_tb.v`**: Testbench for the `memory_out` module.
+- **`memory_weight_tb.v`**: Testbench for the `memory_weight` module.
+
+### **Arithmetic Circuits**
+- **`multiplier_ckt_8bit.v`**: 8-bit multiplier circuit used for performing multiplication operations in matrix multiplication.
+- **`adder_ckt_8_bit.v`**: 8-bit adder circuit used for performing addition operations in matrix summation and weight updates.
+
+### **Testbenches for Arithmetic Circuits**
+- **`multiplier_ckt_8bit_tb.v`**: Testbench for the `multiplier_ckt_8bit` module.
+- **`adder_ckt_8_bit_tb.v`**: Testbench for the `adder_ckt_8_bit` module.
+
+## How It Works
+
+1. **Memory Units**:  
+   - **Input Features**: Stored in `memory_in.v`. These are the input values used to train the regression model.
+   - **Output Values**: Stored in `memory_out.v`. These are the computed values after performing regression calculations.
+   - **Weights**: Stored in `memory_weight.v`. The weights are updated during each iteration to minimize error.
+
+2. **Arithmetic Circuits**:  
+   - **Multiplier Circuit**: Used to perform the multiplication operations during matrix calculations.
+   - **Adder Circuit**: Performs the addition operations required for summing matrices and updating weights.
+
+3. **Testing**:  
+   - Each module includes its corresponding testbench (e.g., `memory_in_tb.v`, `multiplier_ckt_8bit_tb.v`) to verify its functionality. 
+
+## Getting Started
+
+To get started with the project, clone the repository and use a Verilog simulator (e.g., ModelSim, Vivado) to run the testbenches and simulate the hardware. Each module has a corresponding testbench file for easy verification of its functionality.
+
+### Requirements:
+- A Verilog simulator such as ModelSim or Vivado.
+- Basic knowledge of hardware description languages (HDLs) like Verilog.
+
+## Motivation
+
+This project is part of my exploration into high-performance hardware systems and reconfigurable architectures. The aim is to implement a simple yet effective hardware-based system for linear regression, optimizing computational performance by leveraging hardware resources for matrix operations.
+
